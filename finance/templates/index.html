@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <h1 class="mb-4">Portfolio Summary</h1>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Shares Owned</th>
+                <th>Number of Shares</th>
+                <th>Current Price</th>
+                <th>Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+            <tr>
+                <td>{{ stock["symbol"] }}</td>
+                <td>{{ stock["quantity"] }}</td>
+                <td>{{ price_stock[stock["symbol"]] }}</td>
+                <td>{{ total_price_stock[stock["symbol"]] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div class="mt-4">
+        <h5>Current Cash Balance </h5>
+        <h5>{{ cash_balance }}</h5>
+        <br>
+        <h5>Total Portfolio Value </h5>
+        <h5>{{ total }}</h5>
+    </div>
+</div>
+{% endblock %}
